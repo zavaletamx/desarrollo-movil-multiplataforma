@@ -3,10 +3,21 @@ import { StatusBar } from 'expo-status-bar';
 import {
 	ActivityIndicator,
 	Button,
+	SafeAreaView,
+	ScrollView,
 	StyleSheet,
 	Text,
 	View,
+	Platform,
 } from 'react-native';
+
+/*
+Importamos nuestros componentes personalizados
+indicamos como lo vamos a llamar y de donde viene
+*/
+import ComponenteUno from './src/ComponenteUno';
+import ComponenteDos from './src/ComponenteDos';
+import ComponenteTres from './src/ComponenteTres';
 
 /*
 Los componentes en ReactNative permiten 
@@ -59,27 +70,60 @@ export default function App() {
     */
 
 	return (
-		<View style={styles.container}>
-			<Text>Hola Mundo</Text>
-			<Button title={nombre} />
-			<ActivityIndicator size='large' color='#333' />
+		<SafeAreaView style={styles.container}>
+			<ScrollView>
+				{/*
+                Si el dispoiitivo es Android, agregamos un 
+                margen de 40 puntos, de lo contrario 
+                no agregamso margen
+                */}
+				<View
+					style={{
+						marginTop:
+							Platform.OS === 'android'
+								? 40
+								: 0,
+					}}
+				/>
+				<Text
+					style={{
+						alignSelf: 'center',
+						fontSize: 30,
+						marginBottom: 10,
+					}}>
+					Hola Mundo
+				</Text>
+				<Button title={nombre} />
+				<ActivityIndicator
+					size='large'
+					color='#333'
+				/>
 
-			{/* Comentario dentro de Return */}
+				{/* Comentario dentro de Return */}
 
-			<ComponenteUno
-				nombreUsuario={nombre}
-				textoPrimerBoton='Primer botón'
-				textoSegundoBoton='Segundo botón'
-				textoTecerBoton='Segundo botón'
-				textoCuartoBoton='Segundo botón'
-				textoQuintoBoton='Segundo botón'
-				textoBotones={arrTextosBotones}
-			/>
+				<ComponenteUno
+					nombreUsuario={nombre}
+					textoPrimerBoton='Primer botón'
+					textoSegundoBoton='Segundo botón'
+					textoTecerBoton='Segundo botón'
+					textoCuartoBoton='Segundo botón'
+					textoQuintoBoton='Segundo botón'
+					textoBotones={arrTextosBotones}
+				/>
 
-			<ComponenteDos />
+				<ComponenteDos />
 
-			<StatusBar style='dark' />
-		</View>
+				<ComponenteTres color='#655D8A' />
+
+				<ComponenteTres color='#7897AB' />
+
+				<ComponenteTres color='#D885A3' />
+
+				<ComponenteTres color='#FDCEB9' />
+
+				<StatusBar style='dark' />
+			</ScrollView>
+		</SafeAreaView>
 	);
 }
 
@@ -98,63 +142,6 @@ Los componentes disponen de un parámetro global llamado
 props donde residen todos los elementos de tipo prop
 que se asignen a un componente
 */
-
-function ComponenteUno(props) {
-	console.log(props);
-
-	return (
-		<View
-			style={{
-				margin: 20,
-				padding: 20,
-				backgroundColor: '#0FF000',
-			}}>
-			<Text>
-				Hola {props.nombreUsuario} desde mi
-				componente creado con una función
-				tradicional
-			</Text>
-
-			<Button title={props.textoBotones[0]} />
-			<Button title={props.textoBotones[1]} />
-			<Button title={props.textoBotones[2]} />
-			<Button title={props.textoBotones[3]} />
-			<Button title={props.textoBotones[4]} />
-		</View>
-	);
-}
-
-/*
-Componente desde una función flecha
-*/
-const ComponenteDos = () => {
-	const arrTextosBotones = [
-		'Primer Botón',
-		'Segundo Botón',
-		'Tercer Botón',
-		'Cuarto Botón',
-		'Quinto Botón',
-	];
-
-	return (
-		<View>
-			<Text>
-				Este es mi segundo componente hecho desde
-				una función flecha
-			</Text>
-
-			<ComponenteUno
-				nombreUsuario={'Aldo'}
-				textoPrimerBoton='Primer botón'
-				textoSegundoBoton='Segundo botón'
-				textoTecerBoton='Segundo botón'
-				textoCuartoBoton='Segundo botón'
-				textoQuintoBoton='Segundo botón'
-				textoBotones={arrTextosBotones}
-			/>
-		</View>
-	);
-};
 
 const styles = StyleSheet.create({
 	container: {
