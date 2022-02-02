@@ -6,9 +6,6 @@ import {
 	Text,
 	View,
 } from 'react-native';
-import Tarjeta from './src/Tarjeta';
-
-import estilos from './src/estilos';
 
 /*
 StatusBar solo se implementa cuando deseamos personalizar 
@@ -47,19 +44,90 @@ Existen 3 niveles de estilos en ReactNative:
 export default function App() {
 	return (
 		/*Estilos por componente*/
-		<SafeAreaView style={estilos.contenedor}>
-			<Text style={estilos.titulo}>Estilos</Text>
+		<SafeAreaView
+			style={{
+				backgroundColor: '#355070',
+				paddingTop: 60,
+				flex: 1,
+			}}>
+			<Text
+				style={{
+					fontSize: 30,
+					color: '#ECE2D0',
+					paddingVertical: 10,
+					fontWeight: 'bold',
+					alignSelf: 'center',
+				}}>
+				Estilos
+			</Text>
 
-			<Text style={estilos.subtitulo}>
+			<Text
+				style={{
+					fontSize: 30,
+					color: '#E1FAF9',
+					paddingVertical: 10,
+					fontWeight: 'normal',
+					alignSelf: 'center',
+				}}>
 				Estilo con caché
 			</Text>
 
-			<Tarjeta texto='Otro Texto' />
+			<View
+				style={{
+					backgroundColor: '#6D597A',
+					marginVertical: 40,
+					padding: 20,
+					marginHorizontal: 10,
+					borderRadius: 10,
+				}}>
+				<Text
+					style={{
+						fontSize: 30,
+						color: '#EAAC8B',
+						paddingVertical: 10,
+						fontWeight: 'normal',
+						alignSelf: 'center',
+					}}>
+					Otro texto
+				</Text>
+			</View>
 
-			<Tarjeta texto='Otra cajita de texto' />
+			<View
+				style={{
+					backgroundColor: '#6D597A',
+					marginVertical: 40,
+					padding: 20,
+					marginHorizontal: 10,
+					borderRadius: 10,
+				}}>
+				<Text
+					style={{
+						fontSize: 30,
+						color: '#EAAC8B',
+						paddingVertical: 10,
+						fontWeight: 'normal',
+						alignSelf: 'center',
+					}}>
+					Otra cajita de texto
+				</Text>
+			</View>
 
-			<View style={estilos.contenedorTarjeta}>
-				<Text style={estilos.textoTarjeta}>
+			<View
+				style={{
+					backgroundColor: '#6D597A',
+					marginVertical: 40,
+					padding: 20,
+					marginHorizontal: 10,
+					borderRadius: 10,
+				}}>
+				<Text
+					style={{
+						fontSize: 30,
+						color: '#EAAC8B',
+						paddingVertical: 10,
+						fontWeight: 'normal',
+						alignSelf: 'center',
+					}}>
 					U__U
 				</Text>
 			</View>
@@ -80,12 +148,3 @@ export default function App() {
 		</SafeAreaView>
 	);
 }
-
-/*
-1.- Creamos un objeto de estilos accesible para este componente.
-
-2.- Deben nombrarse con una clave, pues al final, es un objeto.
-
-3.- Creamos una clave con un objeto por cada estilo que vamos 
-a crear
-*/

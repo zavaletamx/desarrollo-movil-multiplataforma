@@ -3,12 +3,10 @@ import { StatusBar } from 'expo-status-bar';
 import {
 	Platform,
 	SafeAreaView,
+	StyleSheet,
 	Text,
 	View,
 } from 'react-native';
-import Tarjeta from './src/Tarjeta';
-
-import estilos from './src/estilos';
 
 /*
 StatusBar solo se implementa cuando deseamos personalizar 
@@ -54,9 +52,17 @@ export default function App() {
 				Estilo con caché
 			</Text>
 
-			<Tarjeta texto='Otro Texto' />
+			<View style={estilos.contenedorTarjeta}>
+				<Text style={estilos.textoTarjeta}>
+					Otro texto
+				</Text>
+			</View>
 
-			<Tarjeta texto='Otra cajita de texto' />
+			<View style={estilos.contenedorTarjeta}>
+				<Text style={estilos.textoTarjeta}>
+					Otra cajita de texto
+				</Text>
+			</View>
 
 			<View style={estilos.contenedorTarjeta}>
 				<Text style={estilos.textoTarjeta}>
@@ -89,3 +95,37 @@ export default function App() {
 3.- Creamos una clave con un objeto por cada estilo que vamos 
 a crear
 */
+const estilos = StyleSheet.create({
+	contenedor: {
+		backgroundColor: '#355070',
+		paddingTop: 60,
+		flex: 1,
+	},
+	titulo: {
+		fontSize: 30,
+		color: '#ECE2D0',
+		paddingVertical: 10,
+		fontWeight: 'bold',
+		alignSelf: 'center',
+	},
+	subtitulo: {
+		fontSize: 30,
+		color: '#E1FAF9',
+		paddingVertical: 10,
+		fontWeight: 'normal',
+		alignSelf: 'center',
+	},
+	contenedorTarjeta: {
+		backgroundColor: '#B56576',
+		marginVertical: 40,
+		padding: 20,
+		marginHorizontal: 10,
+		borderRadius: 10,
+	},
+	textoTarjeta: {
+		fontSize: 30,
+		paddingVertical: 10,
+		fontWeight: 'normal',
+		alignSelf: 'center',
+	},
+});
