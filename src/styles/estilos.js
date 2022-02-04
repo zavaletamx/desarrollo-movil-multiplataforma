@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import colores from './colores';
 
 /*
 Declaramos un objetos de estilos globales y lo exportamos
@@ -6,27 +7,27 @@ para poder añadirlo en otros componentes
 */
 const estilos = StyleSheet.create({
 	contenedor: {
-		backgroundColor: '#355070',
+		backgroundColor: colores.yinMnBlue,
 		paddingTop: 60,
 		flex: 1,
 	},
 	titulo: {
 		fontSize: 30,
-		color: '#ECE2D0',
+		color: colores.bone,
 		paddingVertical: 10,
 		fontWeight: 'bold',
 		alignSelf: 'center',
 	},
 	subtitulo: {
 		fontSize: 30,
-		color: '#E1FAF9',
+		color: colores.lightCyan,
 		paddingVertical: 10,
 		fontWeight: 'normal',
 		alignSelf: 'center',
 	},
 	contenedorTarjeta: {
-		backgroundColor: '#E1FAF9',
-		marginVertical: 40,
+		backgroundColor: colores.lightCyan,
+		marginVertical: 10,
 		padding: 20,
 		marginHorizontal: 10,
 		borderRadius: 10,
@@ -36,7 +37,13 @@ const estilos = StyleSheet.create({
 		paddingVertical: 10,
 		fontWeight: 'normal',
 		alignSelf: 'center',
-		color: '#E56B6F',
+		color: colores.candyPink,
+	},
+	contenedorTarjeta2: {
+		backgroundColor: colores.chineseViolet,
+	},
+	textoTarjeta2: {
+		color: colores.vividSkyBlue,
 	},
 });
 

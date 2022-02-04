@@ -3,7 +3,7 @@ Representación de una tarjeta
 */
 import React from 'react';
 import { Text, View } from 'react-native';
-import estilos from './estilos';
+import estilos from './styles/estilos';
 
 export default function Tarjeta(props) {
 	return (
