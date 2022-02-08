@@ -1,131 +1,57 @@
-import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { ScrollView, Text, View } from 'react-native';
-import colores from './src/styles/colores';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-import Tarjeta from './src/Tarjeta';
+/**
+ * ReactNative indica que toda la app y cualquier método de navegación debe estar contenido
+ * por un NavigationContainer, en caso de existir más de un método de navegación
+ * tod_os deben pertenecer al mismo NavigationContainer
+ *
+ * Mientras que todas las pantalla (screens) que se naveguen mediante un Stack
+ * Deben pertenecer a un StackNavigator.
+ *
+ * Cada pantalla a la que se pueda navegar la representaremos por medio de
+ * un StackScreen
+ */
+
+//Importamos a NavigationContainer
+import { NavigationContainer } from '@react-navigation/native';
+
+//Importamos a StackNavigator
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+//Inicializamos el Stack (contenedor) de nuestras pantallas
+const Stack = createNativeStackNavigator();
 
 /*
-El método de organización estructural de ReactNative es
-FlexBox, es decir, los contenedores se ajustan dinámicamente 
-en función de los elementos que lo componen
-
-Esta propiedad se llama Flex
-
-la propiedad de estilo height defecto de una view
-es dinámica (wrap_content) en función del contenido
-
-Flex indica un peso NO UN NUMERO DE COLUMNAS
-
-React se encarga de balancear los pesos en funcíon de la unidad
-de flex
+Debemos importar todas las pantallas que vamos a referenciar 
+al Stack
 */
+import MenuScreen from './src/screens/MenuScreen';
+import FlexBoxScreen from './src/screens/FlexBoxScreen';
+import EstilosGlobalesScreen from './src/screens/EstilosGlobalesScreen';
 
 export default function App() {
-	const arreglo = [];
-	for (let i = 0; i < 20; i++) {
-		arreglo.push(`Texto No ${i + 1}`);
-	}
-
 	return (
-		/*
-        Podemos controlar la posición y orientación de 
-        los elementos de FlexBox utilizando 
-        flexDirection:
-        column (defecto) ===== apila los elementos de 
-                                forma vertical en el 
-                                orden declarado
+		/** Creamos un contenedor de navegación para 
+        toda la app */
+		<NavigationContainer>
+			{/* Creamos un Stack (contenedor) para nuestras
+			pantallas */}
+			<Stack.Navigator>
+				{/* Cada componente al que querramos navegar debe aparecer
+                como Screen de este stack  */}
+				<Stack.Screen
+					name='menu'
+					component={MenuScreen}
+				/>
 
-        column-reverse ======  apila los elementos de 
-                                forma vertical en el 
-                                orden contrario al declarado
+				<Stack.Screen
+					name='flex'
+					component={FlexBoxScreen}
+				/>
 
-        row            ======  apila los elementos de 
-                                forma horizontal en el 
-                                orden declarado
-
-        row            ======  apila los elementos de 
-                                forma horizontal en el 
-                                orden contrario al declarado
-        */
-
-		/*Contenedor principal para elementos verticales*/
-		<View
-			style={{
-				flex: 1,
-				flexDirection: 'column',
-				backgroundColor: colores.tumbleweed,
-			}}>
-			{/** Contenedor del slider horizontal */}
-			<View
-				style={{
-					flex: 1,
-					backgroundColor: colores.chineseViolet,
-				}}></View>
-
-			{/** Contenedor de la cuadrícula */}
-			<View
-				style={{
-					flex: 2,
-					flexDirection: 'row',
-				}}>
-				{/** Contenedor del lado izquierdo */}
-				<View
-					style={{
-						flex: 1,
-						flexDirection: 'column',
-					}}>
-					{/** Cuadro superior derecho */}
-					<View
-						style={{
-							flex: 1,
-							backgroundColor:
-								colores.middleBlueGreen,
-						}}></View>
-
-					{/** Cuadro inferior derecho */}
-					<View
-						style={{
-							flex: 1,
-							backgroundColor:
-								colores.tumbleweed,
-						}}></View>
-				</View>
-
-				{/** Contenedor del lado derecho */}
-				<View
-					style={{
-						flex: 1,
-						flexDirection: 'column-reverse',
-					}}>
-					{/** Cuadro superior derecho */}
-					<ScrollView
-						style={{
-							flex: 1,
-							backgroundColor:
-								colores.middleBlueGreen,
-						}}>
-						<Tarjeta texto='Tarjeta X' />
-						<Tarjeta texto='Tarjeta X' />
-						<Tarjeta texto='Tarjeta X' />
-						<Tarjeta texto='Tarjeta X' />
-						<Tarjeta texto='Tarjeta X' />
-						<Tarjeta texto='Tarjeta X' />
-						<Tarjeta texto='Tarjeta X' />
-						<Tarjeta texto='Tarjeta X' />
-						<Tarjeta texto='Tarjeta X' />
-						<Tarjeta texto='Tarjeta X' />
-					</ScrollView>
-
-					{/** Cuadro inferior derecho */}
-					<View
-						style={{
-							flex: 1,
-							backgroundColor:
-								colores.tumbleweed,
-						}}></View>
-				</View>
-			</View>
-		</View>
+				<Stack.Screen
+					name='estilos'
+					component={EstilosGlobalesScreen}
+				/>
+			</Stack.Navigator>
+		</NavigationContainer>
 	);
 }
