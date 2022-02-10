@@ -1,20 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+//Importamos a NavigationContainer
+import { NavigationContainer } from '@react-navigation/native';
+
+//Importamos a StackNavigator
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+//Inicializamos el Stack (contenedor) de nuestras pantallas
+const Stack = createNativeStackNavigator();
+
+import Dificultad from './src/screens/Dificultad';
+import Juego from './src/screens/Juego';
+import JuegoDificil from './src/screens/JuegoDificil';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+	return (
+		<NavigationContainer>
+			<Stack.Navigator initialRouteName='Dificultad'>
+				<Stack.Screen
+					name='Dificultad'
+					component={Dificultad}
+				/>
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+				<Stack.Screen
+					name='Juego'
+					component={Juego}
+				/>
+
+				<Stack.Screen
+					name='JuegoDificil'
+					component={JuegoDificil}
+				/>
+			</Stack.Navigator>
+		</NavigationContainer>
+	);
+}
