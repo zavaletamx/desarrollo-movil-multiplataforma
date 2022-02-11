@@ -26,6 +26,9 @@ al Stack
 import MenuScreen from './src/screens/MenuScreen';
 import FlexBoxScreen from './src/screens/FlexBoxScreen';
 import EstilosGlobalesScreen from './src/screens/EstilosGlobalesScreen';
+import IconosScreen from './src/screens/IconosScreen';
+import TabContainerScreen from './src/screens/TabContainerScreen';
+import colores from './src/styles/colores';
 
 export default function App() {
 	return (
@@ -34,7 +37,16 @@ export default function App() {
 		<NavigationContainer>
 			{/* Creamos un Stack (contenedor) para nuestras
 			pantallas */}
-			<Stack.Navigator>
+			<Stack.Navigator
+				screenOptions={{
+					headerStyle: {
+						backgroundColor: colores.yinMnBlue,
+					},
+					headerTintColor: colores.bone,
+					headerTitleStyle: {
+						fontWeight: 'bold',
+					},
+				}}>
 				{/* Cada componente al que querramos navegar debe aparecer
                 como Screen de este stack  */}
 				<Stack.Screen
@@ -50,6 +62,32 @@ export default function App() {
 				<Stack.Screen
 					name='estilos'
 					component={EstilosGlobalesScreen}
+					options={{
+						title: 'Estilos Globales',
+						headerStyle: {
+							backgroundColor: colores.bone,
+						},
+						headerTintColor: colores.yinMnBlue,
+						headerTitleStyle: {
+							fontWeight: 'bold',
+						},
+					}}
+				/>
+
+				<Stack.Screen
+					name='iconos'
+					component={IconosScreen}
+					options={{ title: 'Ìconos en Expo' }}
+				/>
+
+				{/* Agregamos al contenedor de Tabs como pantalla navegable 
+                del Stack */}
+				<Stack.Screen
+					name='menu_tab'
+					component={TabContainerScreen}
+					options={{
+						title: 'Mi cuenta',
+					}}
 				/>
 			</Stack.Navigator>
 		</NavigationContainer>

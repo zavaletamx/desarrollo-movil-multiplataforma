@@ -9,6 +9,7 @@ const colores = {
 	vividSkyBlue: '#0AD3FF',
 	aquamarine: '#78FFD6',
 	lightCyan: '#E1FAF9',
+	inactiveTab: '#526A87',
 };
 
 export default colores;

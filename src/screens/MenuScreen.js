@@ -53,6 +53,18 @@ const MenuScreen = (props) => {
 				title='Estilos Globales'
 				onPress={() => clickPantalla('estilos')}
 			/>
+
+			<Button
+				title='Iconos'
+				onPress={() => {
+					props.navigation.navigate('iconos');
+				}}
+			/>
+
+			<Button
+				title='Menu Tab'
+				onPress={() => clickPantalla('menu_tab')}
+			/>
 		</View>
 	);
 };
