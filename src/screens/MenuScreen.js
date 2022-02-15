@@ -65,6 +65,11 @@ const MenuScreen = (props) => {
 				title='Menu Tab'
 				onPress={() => clickPantalla('menu_tab')}
 			/>
+
+			<Button
+				title='Menu Drawer'
+				onPress={() => clickPantalla('menu_drawer')}
+			/>
 		</View>
 	);
 };

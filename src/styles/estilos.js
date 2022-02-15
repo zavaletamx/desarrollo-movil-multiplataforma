@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import colores from './colores';
 
 /*
@@ -44,6 +45,67 @@ const estilos = StyleSheet.create({
 	},
 	textoTarjeta2: {
 		color: colores.vividSkyBlue,
+	},
+
+	tituloComponente: {
+		margin: 16,
+		fontSize: 24,
+		textAlign: 'center',
+		color: colores.yinMnBlue,
+		fontWeight: 'bold',
+	},
+
+	textInputBase: {
+		borderWidth: 1,
+		width: null,
+	},
+
+	textInputPerso1: {
+		borderWidth: 2,
+		borderColor: colores.yinMnBlue,
+		margin: 8,
+		padding: 8,
+		borderRadius: 8,
+		color: colores.chineseViolet,
+		backgroundColor: colores.bone,
+	},
+
+	textInputPerso2: {
+		borderBottomWidth: 2,
+		borderBottomColor: colores.yinMnBlue,
+		margin: 8,
+		padding: 8,
+	},
+
+	textInputIconContainer1: {
+		flex: 1,
+		flexDirection: 'row',
+		borderColor: colores.yinMnBlue,
+		backgroundColor: colores.bone,
+		borderWidth: 2,
+		margin: 8,
+		padding: 8,
+		borderRadius: 8,
+	},
+
+	textInputIconContainer2: {
+		flex: 1,
+		flexDirection: 'row',
+		borderBottomColor: colores.yinMnBlue,
+		borderBottomWidth: 2,
+		margin: 8,
+		padding: 8,
+	},
+	textInputIcon: {
+		flex: 1,
+		marginStart: 4,
+		color: colores.chineseViolet,
+		fontWeight: 'bold',
+	},
+
+	textInputIconLine: {
+		color: '#000',
+		fontWeight: 'normal',
 	},
 });
 

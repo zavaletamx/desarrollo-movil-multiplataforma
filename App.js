@@ -1,3 +1,6 @@
+// Import para activar los gestos y animaciones
+// que necesita NavigationDrawer
+import 'react-native-gesture-handler';
 /**
  * ReactNative indica que toda la app y cualquier método de navegación debe estar contenido
  * por un NavigationContainer, en caso de existir más de un método de navegación
@@ -29,6 +32,13 @@ import EstilosGlobalesScreen from './src/screens/EstilosGlobalesScreen';
 import IconosScreen from './src/screens/IconosScreen';
 import TabContainerScreen from './src/screens/TabContainerScreen';
 import colores from './src/styles/colores';
+import DrawerContainer from './src/screens/DrawerContainer';
+import ControlesScreen from './src/screens/ControlesScreen';
+
+/*
+Agregamos nuestro Drawer como un elemento mas 
+del Stack
+*/
 
 export default function App() {
 	return (
@@ -88,6 +98,16 @@ export default function App() {
 					options={{
 						title: 'Mi cuenta',
 					}}
+				/>
+
+				<Stack.Screen
+					name='menu_drawer'
+					component={DrawerContainer}
+				/>
+
+				<Stack.Screen
+					name='controles'
+					component={ControlesScreen}
 				/>
 			</Stack.Navigator>
 		</NavigationContainer>
