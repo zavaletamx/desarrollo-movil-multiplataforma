@@ -77,6 +77,13 @@ const MenuScreen = (props) => {
 					props.navigation.navigate('controles');
 				}}
 			/>
+
+			<Button
+				title='Imágenes'
+				onPress={() => {
+					props.navigation.navigate('imagenes');
+				}}
+			/>
 		</View>
 	);
 };

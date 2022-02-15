@@ -110,6 +110,11 @@ const ControlesScreen = (props) => {
 					autoCorrect={false}
 				/>
 			</View>
+
+			<TextInput
+				placeholder='Campo de texto'
+				keyboardType='number-pad'
+			/>
 		</ScrollView>
 	);
 };

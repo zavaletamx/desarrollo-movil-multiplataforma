@@ -34,6 +34,7 @@ import TabContainerScreen from './src/screens/TabContainerScreen';
 import colores from './src/styles/colores';
 import DrawerContainer from './src/screens/DrawerContainer';
 import ControlesScreen from './src/screens/ControlesScreen';
+import ImagenesScreen from './src/screens/ImagenesScreen';
 
 /*
 Agregamos nuestro Drawer como un elemento mas 
@@ -108,6 +109,11 @@ export default function App() {
 				<Stack.Screen
 					name='controles'
 					component={ControlesScreen}
+				/>
+
+				<Stack.Screen
+					name='imagenes'
+					component={ImagenesScreen}
 				/>
 			</Stack.Navigator>
 		</NavigationContainer>
