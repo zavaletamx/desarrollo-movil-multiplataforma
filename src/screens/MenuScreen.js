@@ -70,6 +70,13 @@ const MenuScreen = (props) => {
 				title='Menu Drawer'
 				onPress={() => clickPantalla('menu_drawer')}
 			/>
+
+			<Button
+				title='Controles'
+				onPress={() => {
+					props.navigation.navigate('controles');
+				}}
+			/>
 		</View>
 	);
 };
