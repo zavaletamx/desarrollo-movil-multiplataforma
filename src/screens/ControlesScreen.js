@@ -1,11 +1,17 @@
 import {
+	Button,
+	Image,
 	ScrollView,
 	Text,
 	TextInput,
+	TouchableOpacity,
 	View,
 } from 'react-native';
 import estilos from '../styles/estilos';
-import { AntDesign } from '@expo/vector-icons';
+import {
+	AntDesign,
+	FontAwesome5,
+} from '@expo/vector-icons';
 import colores from '../styles/colores';
 
 const ControlesScreen = (props) => {
@@ -115,6 +121,73 @@ const ControlesScreen = (props) => {
 				placeholder='Campo de texto'
 				keyboardType='number-pad'
 			/>
+
+			<Text
+				style={{
+					...estilos.tituloComponente,
+					marginTop: 40,
+				}}>
+				Controles de Selección
+			</Text>
+
+			{/* Botón preestablecido por React, look and feel 
+            de los botones nativos del S.O */}
+			<View
+				style={{
+					flex: 1,
+					margin: 8,
+					padding: 8,
+				}}>
+				<Button title='Botón' color={'tomato'} />
+			</View>
+
+			{/* ReactNative nos permite generar nuestros 
+            propios componentes seleccionables por medio 
+            del elemento genérico llamado 
+            TouchableOpacity */}
+			<TouchableOpacity>
+				<Image
+					source={require('./../../assets/images/plantas.jpg')}
+					style={{
+						width: 150,
+						height: 150,
+						alignSelf: 'center',
+						borderRadius: 10,
+					}}
+				/>
+			</TouchableOpacity>
+
+			<TouchableOpacity
+				style={{
+					backgroundColor: colores.bone,
+					margin: 8,
+					padding: 16,
+					borderRadius: 8,
+					flex: 1,
+					flexDirection: 'row',
+					alignItems: 'center',
+					borderWidth: 2,
+					borderColor: colores.yinMnBlue,
+				}}>
+				<FontAwesome5
+					name='upload'
+					color={colores.yinMnBlue}
+					size={24}
+				/>
+				<Text
+					style={{
+						color: colores.yinMnBlue,
+						textAlign: 'center',
+						marginStart: 16,
+						fontSize: 16,
+						fontWeight: 'bold',
+					}}>
+					Botón personalizado
+				</Text>
+			</TouchableOpacity>
+
+			{/* Creamos un espacio para que los elementos no queden sobre el fondo */}
+			<View style={{ marginBottom: 100 }} />
 		</ScrollView>
 	);
 };
