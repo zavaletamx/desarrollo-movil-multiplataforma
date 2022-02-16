@@ -107,6 +107,19 @@ const estilos = StyleSheet.create({
 		color: '#000',
 		fontWeight: 'normal',
 	},
+
+	switchContainer: {
+		flex: 1,
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center',
+		margin: 8,
+		padding: 8,
+	},
+
+	switchText: {
+		flex: 1,
+	},
 });
 
 export default estilos;

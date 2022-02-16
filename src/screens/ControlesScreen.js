@@ -2,6 +2,7 @@ import {
 	Button,
 	Image,
 	ScrollView,
+	Switch,
 	Text,
 	TextInput,
 	TouchableOpacity,
@@ -13,8 +14,11 @@ import {
 	FontAwesome5,
 } from '@expo/vector-icons';
 import colores from '../styles/colores';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const ControlesScreen = (props) => {
+	// Constante para simular el estado de un Switch
+	const valorSwitch = true;
 	return (
 		<ScrollView>
 			<Text style={estilos.tituloComponente}>
@@ -185,6 +189,84 @@ const ControlesScreen = (props) => {
 					Botón personalizado
 				</Text>
 			</TouchableOpacity>
+
+			{/* Componente switch */}
+			<Switch
+				value={valorSwitch}
+				trackColor={{
+					false: colores.candyPink, //Color de la barra apagada (Android)
+					true: colores.yinMnBlue, //Color de la barra encendida (Android)
+				}}
+				ios_backgroundColor={colores.candyPink}
+				// Dependiendo del estado del Swith podemos
+				// cambiar el color del Thumb
+				thumbColor={
+					valorSwitch
+						? colores.vividSkyBlue
+						: colores.bone
+				}
+			/>
+
+			<Switch
+				value={!valorSwitch}
+				trackColor={{
+					false: colores.candyPink,
+					true: colores.yinMnBlue,
+				}}
+				//Color de la barra apagada (iOS)
+				ios_backgroundColor={colores.candyPink}
+				thumbColor={
+					!valorSwitch
+						? colores.vividSkyBlue
+						: colores.bone
+				}
+			/>
+
+			<Text style={estilos.tituloComponente}>
+				Switch con etiqueta
+			</Text>
+
+			<View style={estilos.switchContainer}>
+				<Text style={estilos.switchText}>
+					Acepto los términos y condiciones
+				</Text>
+				<Switch
+					value={valorSwitch}
+					trackColor={{
+						false: colores.candyPink, //Color de la barra apagada (Android)
+						true: colores.yinMnBlue, //Color de la barra encendida (Android)
+					}}
+					ios_backgroundColor={colores.candyPink}
+					// Dependiendo del estado del Swith podemos
+					// cambiar el color del Thumb
+					thumbColor={
+						valorSwitch
+							? colores.vividSkyBlue
+							: colores.bone
+					}
+				/>
+			</View>
+
+			<View style={estilos.switchContainer}>
+				<Text style={estilos.switchText}>
+					Vender mi alma
+				</Text>
+				<Switch
+					value={!valorSwitch}
+					trackColor={{
+						false: colores.candyPink, //Color de la barra apagada (Android)
+						true: colores.yinMnBlue, //Color de la barra encendida (Android)
+					}}
+					ios_backgroundColor={colores.candyPink}
+					// Dependiendo del estado del Swith podemos
+					// cambiar el color del Thumb
+					thumbColor={
+						!valorSwitch
+							? colores.vividSkyBlue
+							: colores.bone
+					}
+				/>
+			</View>
 
 			{/* Creamos un espacio para que los elementos no queden sobre el fondo */}
 			<View style={{ marginBottom: 100 }} />
