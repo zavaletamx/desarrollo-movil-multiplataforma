@@ -120,6 +120,20 @@ const estilos = StyleSheet.create({
 	switchText: {
 		flex: 1,
 	},
+
+	checkBoxContainer: {
+		flex: 1,
+		flexDirection: 'row',
+		margin: 8,
+		padding: 8,
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+
+	checkBoxText: {
+		flex: 1,
+		marginStart: 8,
+	},
 });
 
 export default estilos;

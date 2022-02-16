@@ -12,17 +12,24 @@ import {
 // Una vez instalada la librería
 // npm i radio-buttons-react-native-expo
 import RadioButtonRN from 'radio-buttons-react-native-expo';
+
+// Una vez instalada la librería expo-checkbox
+// expo install expo-checkbox
+import CheckBox from 'expo-checkbox';
+
 import estilos from '../styles/estilos';
 import {
 	AntDesign,
 	FontAwesome5,
 } from '@expo/vector-icons';
 import colores from '../styles/colores';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const ControlesScreen = (props) => {
 	// Constante para simular el estado de un Switch
 	const valorSwitch = true;
+
+	// Constante para simular el estado de un CheckBox
+	const valorCheckBox = true;
 
 	// Los RadioButtons están hechos para que solo
 	// pueda seleccionarse uno del grupo
@@ -309,6 +316,45 @@ const ControlesScreen = (props) => {
 						/>
 					}
 				/>
+			</View>
+
+			<Text style={estilos.tituloComponente}>
+				CheckBox
+			</Text>
+
+			{/* Los CheckBox son componentes diseñados
+            para seleccionarse uno, ninguno o varios  */}
+			<CheckBox
+				value={valorCheckBox}
+				color={colores.middleBlueGreen}
+			/>
+			<CheckBox
+				value={!valorCheckBox}
+				color={colores.candyPink}
+			/>
+
+			<Text style={estilos.tituloComponente}>
+				CheckBox con etiqueta
+			</Text>
+
+			<View style={estilos.checkBoxContainer}>
+				<CheckBox
+					value={valorCheckBox}
+					color={colores.roseDust}
+				/>
+				<Text style={estilos.checkBoxText}>
+					Deseo recibir ofertas
+				</Text>
+			</View>
+
+			<View style={estilos.checkBoxContainer}>
+				<CheckBox
+					value={!valorCheckBox}
+					color={colores.yinMnBlue}
+				/>
+				<Text style={estilos.checkBoxText}>
+					Deseo suscribirme
+				</Text>
 			</View>
 
 			{/* Creamos un espacio para que los elementos no queden sobre el fondo */}
