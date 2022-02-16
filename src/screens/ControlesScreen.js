@@ -8,6 +8,10 @@ import {
 	TouchableOpacity,
 	View,
 } from 'react-native';
+
+// Una vez instalada la librería
+// npm i radio-buttons-react-native-expo
+import RadioButtonRN from 'radio-buttons-react-native-expo';
 import estilos from '../styles/estilos';
 import {
 	AntDesign,
@@ -19,6 +23,25 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 const ControlesScreen = (props) => {
 	// Constante para simular el estado de un Switch
 	const valorSwitch = true;
+
+	// Los RadioButtons están hechos para que solo
+	// pueda seleccionarse uno del grupo
+	// La librería de RadioButton funciona por medio
+	// de un arreglo
+
+	// Creamos un arreglo con las opciones del RadioButton
+	const opcionesRadioButton = [
+		{
+			label: 'Opción 1',
+		},
+		{
+			label: 'Opción 2',
+		},
+		{
+			label: 'Opción 3',
+		},
+	];
+
 	return (
 		<ScrollView>
 			<Text style={estilos.tituloComponente}>
@@ -264,6 +287,26 @@ const ControlesScreen = (props) => {
 						!valorSwitch
 							? colores.vividSkyBlue
 							: colores.bone
+					}
+				/>
+			</View>
+
+			<Text style={estilos.tituloComponente}>
+				RadioButtons
+			</Text>
+
+			{/* Indicamos un componente de tipo RadioButtonRN
+            donde mostramos las opciones previamente generadas 
+            en el arreglo  */}
+			<View style={{ paddingHorizontal: 8 }}>
+				<RadioButtonRN
+					data={opcionesRadioButton}
+					icon={
+						<FontAwesome5
+							name='check'
+							size={22}
+							color={'green'}
+						/>
 					}
 				/>
 			</View>
