@@ -35,6 +35,7 @@ import colores from './src/styles/colores';
 import DrawerContainer from './src/screens/DrawerContainer';
 import ControlesScreen from './src/screens/ControlesScreen';
 import ImagenesScreen from './src/screens/ImagenesScreen';
+import { StatusBar } from 'react-native';
 
 /*
 Agregamos nuestro Drawer como un elemento mas 
@@ -46,6 +47,13 @@ export default function App() {
 		/** Creamos un contenedor de navegación para 
         toda la app */
 		<NavigationContainer>
+			{/* Personalizamos la barra de estatus  */}
+			<StatusBar
+				barStyle='light-content'
+				// Para android podemos cambiar el color
+				// de fondo
+				backgroundColor={colores.yinMnBlue}
+			/>
 			{/* Creamos un Stack (contenedor) para nuestras
 			pantallas */}
 			<Stack.Navigator
@@ -98,11 +106,15 @@ export default function App() {
 					component={TabContainerScreen}
 					options={{
 						title: 'Mi cuenta',
+						headerShadowVisible: false,
 					}}
 				/>
 
 				<Stack.Screen
 					name='menu_drawer'
+					options={{
+						headerShown: false,
+					}}
 					component={DrawerContainer}
 				/>
 
