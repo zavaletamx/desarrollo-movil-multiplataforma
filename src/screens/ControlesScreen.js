@@ -450,6 +450,7 @@ const ControlesScreen = (props) => {
             el tipo de vista (display) y la fecha de inicio 
             del DatePicker */}
 			<DateTimePicker
+				// Display spinner solo aplica en iOS
 				display='spinner'
 				value={new Date()}
 				onChange={() => {}}
