@@ -1,6 +1,7 @@
 import {
 	Button,
 	Image,
+	Platform,
 	ScrollView,
 	Switch,
 	Text,
@@ -20,6 +21,10 @@ import CheckBox from 'expo-checkbox';
 // Una vez instalada la librería expo-slider
 // expo install @react-native-community/slider
 import Slider from '@react-native-community/slider';
+
+// Una vez instalada la librería expo-picker
+// expo install @react-native-picker/picker
+import { Picker } from '@react-native-picker/picker';
 
 import estilos from '../styles/estilos';
 import {
@@ -361,6 +366,9 @@ const ControlesScreen = (props) => {
 				</Text>
 			</View>
 
+			<Text style={estilos.tituloComponente}>
+				Slider
+			</Text>
 			<Slider
 				style={{ margin: 8 }}
 				minimumValue={1}
@@ -371,6 +379,65 @@ const ControlesScreen = (props) => {
 				maximumTrackTintColor={colores.yinMnBlue}
 				thumbTintColor={colores.tumbleweed}
 			/>
+
+			<View style={{ margin: 8, padding: 8 }}>
+				<Text
+					style={{
+						...estilos.tituloComponente,
+						marginBottom: 0,
+						paddingBottom: 0,
+					}}>
+					Picker (selecciona)
+				</Text>
+				<View
+					style={{
+						borderWidth:
+							Platform.OS === 'android'
+								? 2
+								: null,
+						borderColor: colores.yinMnBlue,
+						marginTop: 8,
+					}}>
+					<Picker
+						prompt='Selecciona un elemento'
+						numberOfLines={1}
+						selectedValue={3}
+						// Para Android podemos visualizar
+						// El Picker como una modal o como un
+						// Dropdown Item
+						//dropdown <----- como un select
+						//modal <-------- en una ventana independiente
+						mode='dropdown'
+						// Ponemos un margen negativo SOLO PARA IOS
+						style={{
+							marginTop:
+								Platform.OS === 'ios'
+									? -32
+									: 0,
+						}}>
+						<Picker.Item
+							label='Uno'
+							value={1}
+						/>
+						<Picker.Item
+							label='Dos'
+							value={2}
+						/>
+						<Picker.Item
+							label='Tres'
+							value={3}
+						/>
+						<Picker.Item
+							label='Cuatro'
+							value={4}
+						/>
+						<Picker.Item
+							label='Cinco'
+							value={5}
+						/>
+					</Picker>
+				</View>
+			</View>
 
 			{/* Creamos un espacio para que los elementos no queden sobre el fondo */}
 			<View style={{ marginBottom: 100 }} />
