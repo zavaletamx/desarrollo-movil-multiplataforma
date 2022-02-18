@@ -26,6 +26,10 @@ import Slider from '@react-native-community/slider';
 // expo install @react-native-picker/picker
 import { Picker } from '@react-native-picker/picker';
 
+// Una vez instalada la librería expo-datepicker
+// expo install @react-native-community/datetimepicker
+import DateTimePicker from '@react-native-community/datetimepicker';
+
 import estilos from '../styles/estilos';
 import {
 	AntDesign,
@@ -438,6 +442,18 @@ const ControlesScreen = (props) => {
 					</Picker>
 				</View>
 			</View>
+
+			<Text style={estilos.tituloComponente}>
+				DatePicker
+			</Text>
+			{/* Para mostrar un DatePicker necesitamos indicar 
+            el tipo de vista (display) y la fecha de inicio 
+            del DatePicker */}
+			<DateTimePicker
+				display='spinner'
+				value={new Date()}
+				onChange={() => {}}
+			/>
 
 			{/* Creamos un espacio para que los elementos no queden sobre el fondo */}
 			<View style={{ marginBottom: 100 }} />
