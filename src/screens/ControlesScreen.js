@@ -17,6 +17,10 @@ import RadioButtonRN from 'radio-buttons-react-native-expo';
 // expo install expo-checkbox
 import CheckBox from 'expo-checkbox';
 
+// Una vez instalada la librería expo-slider
+// expo install @react-native-community/slider
+import Slider from '@react-native-community/slider';
+
 import estilos from '../styles/estilos';
 import {
 	AntDesign,
@@ -356,6 +360,17 @@ const ControlesScreen = (props) => {
 					Deseo suscribirme
 				</Text>
 			</View>
+
+			<Slider
+				style={{ margin: 8 }}
+				minimumValue={1}
+				maximumValue={10}
+				value={7}
+				step={1}
+				minimumTrackTintColor={colores.candyPink}
+				maximumTrackTintColor={colores.yinMnBlue}
+				thumbTintColor={colores.tumbleweed}
+			/>
 
 			{/* Creamos un espacio para que los elementos no queden sobre el fondo */}
 			<View style={{ marginBottom: 100 }} />
