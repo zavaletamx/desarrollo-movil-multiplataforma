@@ -35,6 +35,7 @@ import colores from './src/styles/colores';
 import DrawerContainer from './src/screens/DrawerContainer';
 import ControlesScreen from './src/screens/ControlesScreen';
 import ImagenesScreen from './src/screens/ImagenesScreen';
+import EstadosScreen from './src/screens/EstadosScreen';
 import { StatusBar } from 'react-native';
 
 /*
@@ -126,6 +127,11 @@ export default function App() {
 				<Stack.Screen
 					name='imagenes'
 					component={ImagenesScreen}
+				/>
+
+				<Stack.Screen
+					name='estados'
+					component={EstadosScreen}
 				/>
 			</Stack.Navigator>
 		</NavigationContainer>

@@ -1,5 +1,10 @@
 import React from 'react';
-import { Button, Text, View } from 'react-native';
+import {
+	Button,
+	Platform,
+	ScrollView,
+	View,
+} from 'react-native';
 
 const MenuScreen = (props) => {
 	// Creamos una función flecha para invocar en el
@@ -13,11 +18,9 @@ const MenuScreen = (props) => {
 	};
 
 	return (
-		<View
+		<ScrollView
 			style={{
 				flex: 1,
-				justifyContent: 'center',
-				alignItems: 'center',
 			}}>
 			{/* Los botones pueden programar su evento onPress
             de manera local o bien invocando a una constante 
@@ -32,12 +35,19 @@ const MenuScreen = (props) => {
             props.navigation.navigate('_NAME_SCREEN_');
 
              */}
+
+			<View style={{ marginTop: 40 }} />
+
 			<Button
 				title='Ejemplo FlexBox'
 				onPress={() => {
 					props.navigation.navigate('flex');
 				}}
 			/>
+
+			{/* Solo queremos mostrar el componente espacio 
+            en Android  */}
+			{Platform.OS === 'android' && <Espacio />}
 
 			{/* Si la función onpress no contiene parámetros, 
             se puede indicar directamente como valor
@@ -47,12 +57,20 @@ const MenuScreen = (props) => {
 				onPress={clickBoton}
 			/>
 
+			{/* Solo queremos mostrar el componente espacio 
+            en Android  */}
+			{Platform.OS === 'android' && <Espacio />}
+
 			{/* Si la función onpress cotiene parámetros, debe indicarse
             dentro de una función flecha */}
 			<Button
 				title='Estilos Globales'
 				onPress={() => clickPantalla('estilos')}
 			/>
+
+			{/* Solo queremos mostrar el componente espacio 
+            en Android  */}
+			{Platform.OS === 'android' && <Espacio />}
 
 			<Button
 				title='Iconos'
@@ -61,15 +79,27 @@ const MenuScreen = (props) => {
 				}}
 			/>
 
+			{/* Solo queremos mostrar el componente espacio 
+            en Android  */}
+			{Platform.OS === 'android' && <Espacio />}
+
 			<Button
 				title='Menu Tab'
 				onPress={() => clickPantalla('menu_tab')}
 			/>
 
+			{/* Solo queremos mostrar el componente espacio 
+            en Android  */}
+			{Platform.OS === 'android' && <Espacio />}
+
 			<Button
 				title='Menu Drawer'
 				onPress={() => clickPantalla('menu_drawer')}
 			/>
+
+			{/* Solo queremos mostrar el componente espacio 
+            en Android  */}
+			{Platform.OS === 'android' && <Espacio />}
 
 			<Button
 				title='Controles'
@@ -78,14 +108,33 @@ const MenuScreen = (props) => {
 				}}
 			/>
 
+			{/* Solo queremos mostrar el componente espacio 
+            en Android  */}
+			{Platform.OS === 'android' && <Espacio />}
+
 			<Button
 				title='Imágenes'
 				onPress={() => {
 					props.navigation.navigate('imagenes');
 				}}
 			/>
-		</View>
+
+			{/* Solo queremos mostrar el componente espacio 
+            en Android  */}
+			{Platform.OS === 'android' && <Espacio />}
+
+			<Button
+				title='Estados'
+				onPress={() => {
+					props.navigation.navigate('estados');
+				}}
+			/>
+		</ScrollView>
 	);
 };
+
+function Espacio(props) {
+	return <View style={{ marginVertical: 10 }} />;
+}
 
 export default MenuScreen;
