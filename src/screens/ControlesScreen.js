@@ -1,4 +1,6 @@
+import React from 'react';
 import {
+	Alert,
 	Button,
 	Image,
 	Platform,
@@ -6,6 +8,7 @@ import {
 	Switch,
 	Text,
 	TextInput,
+	ToastAndroid,
 	TouchableOpacity,
 	View,
 } from 'react-native';
@@ -52,15 +55,81 @@ const ControlesScreen = (props) => {
 	// Creamos un arreglo con las opciones del RadioButton
 	const opcionesRadioButton = [
 		{
+			value: 1,
 			label: 'Opción 1',
 		},
 		{
+			value: 2,
 			label: 'Opción 2',
 		},
 		{
+			value: 3,
 			label: 'Opción 3',
 		},
 	];
+
+	/*
+    Los States son un tipo de elemento de React 
+    que permiten actualizar información en tiempo de ejecución
+    Generando nuevas versiones de constantes
+    */
+	const [campoTexto1, setCampoTexto1] =
+		React.useState('Texto 1');
+	const [campoTexto2, setCampoTexto2] =
+		React.useState('Texto 2');
+	const [campoTexto3, setCampoTexto3] =
+		React.useState('Texto 3');
+	const [campoTexto4, setCampoTexto4] =
+		React.useState('Texto 4');
+	const [campoTexto5, setCampoTexto5] =
+		React.useState('Texto 5');
+	const [campoTexto6, setCampoTexto6] =
+		React.useState('Texto 6');
+
+	/*
+    State para Switch
+    */
+	const [valSwitch1, setValSwitch1] =
+		React.useState(false);
+	const [valSwitch2, setValSwitch2] =
+		React.useState(false);
+	const [valSwitch3, setValSwitch3] =
+		React.useState(false);
+	const [valSwitch4, setValSwitch4] =
+		React.useState(false);
+
+	/*
+    Valor del RadioButton
+    */
+	const [valRadio, setValRadio] = React.useState(null);
+
+	/*
+    Valor del checkBox
+    */
+	const [valCheck1, setValCheck1] = React.useState(false);
+	const [valCheck2, setValCheck2] = React.useState(false);
+	const [valCheck3, setValCheck3] = React.useState(false);
+	const [valCheck4, setValCheck4] = React.useState(false);
+
+	/*
+    Slider
+    */
+	const [valSlider, setValSlider] = React.useState(0);
+
+	/*
+    Picker
+    */
+	const [valPicker, setValPicker] = React.useState(null);
+
+	/*
+    DatePicker
+    En el caso de iOS por defecto es true, para el caso 
+    de Android, por defecto es false
+    */
+	const [datePickerVisible, setDatePickerVisible] =
+		React.useState(
+			Platform.OS === 'ios' ? true : false
+		);
 
 	return (
 		<ScrollView>
@@ -71,22 +140,23 @@ const ControlesScreen = (props) => {
 			{/* TextInput es el componente encargado 
             de renderizar un campo de texto, por defecto
             carece de cualquier tipo de diseño */}
-			<TextInput
-				style={estilos.textInputBase}
-				placeholder='Ingresa un texto'
-				keyboardType='default'
-			/>
 
 			<TextInput
 				style={estilos.textInputPerso1}
 				placeholder='Nombre'
 				keyboardType='default'
+				value={campoTexto1}
+				// Cuando cambie el texto
+				// Actualizamos el valor de State
+				onChangeText={(e) => setCampoTexto1(e)}
 			/>
 
 			<TextInput
 				style={estilos.textInputPerso2}
 				placeholder='Teléfono'
 				keyboardType='phone-pad'
+				value={campoTexto2}
+				onChangeText={(e) => setCampoTexto2(e)}
 			/>
 
 			{/* Creamos nuestro propio TextInput con 
@@ -101,6 +171,8 @@ const ControlesScreen = (props) => {
 					style={estilos.textInputIcon}
 					placeholder='Username'
 					keyboardType='default'
+					value={campoTexto3}
+					onChangeText={(e) => setCampoTexto3(e)}
 				/>
 			</View>
 
@@ -118,6 +190,8 @@ const ControlesScreen = (props) => {
 					autoCapitalize='none'
 					//Evitamos la corrección de palabras
 					autoCorrect={false}
+					value={campoTexto4}
+					onChangeText={(e) => setCampoTexto4(e)}
 				/>
 			</View>
 
@@ -139,6 +213,8 @@ const ControlesScreen = (props) => {
 					autoCapitalize='none'
 					//Evitamos la corrección de palabras
 					autoCorrect={false}
+					value={campoTexto5}
+					onChangeText={(e) => setCampoTexto5(e)}
 				/>
 			</View>
 
@@ -161,13 +237,10 @@ const ControlesScreen = (props) => {
 					autoCapitalize='none'
 					//Evitamos la corrección de palabras
 					autoCorrect={false}
+					value={campoTexto6}
+					onChangeText={(e) => setCampoTexto6(e)}
 				/>
 			</View>
-
-			<TextInput
-				placeholder='Campo de texto'
-				keyboardType='number-pad'
-			/>
 
 			<Text
 				style={{
@@ -235,7 +308,7 @@ const ControlesScreen = (props) => {
 
 			{/* Componente switch */}
 			<Switch
-				value={valorSwitch}
+				value={valSwitch1}
 				trackColor={{
 					false: colores.candyPink, //Color de la barra apagada (Android)
 					true: colores.yinMnBlue, //Color de la barra encendida (Android)
@@ -244,14 +317,22 @@ const ControlesScreen = (props) => {
 				// Dependiendo del estado del Swith podemos
 				// cambiar el color del Thumb
 				thumbColor={
-					valorSwitch
+					valSwitch1
 						? colores.vividSkyBlue
 						: colores.bone
 				}
+				//Guardamos en uns State
+				//el estado actual del switch
+				onValueChange={(e) => {
+					console.log(e);
+					//Modificamos dos Switch a la vez
+					setValSwitch1(e);
+					setValSwitch2(e);
+				}}
 			/>
 
 			<Switch
-				value={!valorSwitch}
+				value={valSwitch2}
 				trackColor={{
 					false: colores.candyPink,
 					true: colores.yinMnBlue,
@@ -259,10 +340,11 @@ const ControlesScreen = (props) => {
 				//Color de la barra apagada (iOS)
 				ios_backgroundColor={colores.candyPink}
 				thumbColor={
-					!valorSwitch
+					valSwitch2
 						? colores.vividSkyBlue
 						: colores.bone
 				}
+				onValueChange={(e) => setValSwitch2(e)}
 			/>
 
 			<Text style={estilos.tituloComponente}>
@@ -270,11 +352,19 @@ const ControlesScreen = (props) => {
 			</Text>
 
 			<View style={estilos.switchContainer}>
-				<Text style={estilos.switchText}>
+				<Text
+					style={estilos.switchText}
+					onPress={() => {
+						/*
+                        Cuando se toque el texto, vamos a invertir 
+                        el valor de los switch
+                        */
+						setValSwitch3(!valSwitch3);
+					}}>
 					Acepto los términos y condiciones
 				</Text>
 				<Switch
-					value={valorSwitch}
+					value={valSwitch3}
 					trackColor={{
 						false: colores.candyPink, //Color de la barra apagada (Android)
 						true: colores.yinMnBlue, //Color de la barra encendida (Android)
@@ -283,19 +373,24 @@ const ControlesScreen = (props) => {
 					// Dependiendo del estado del Swith podemos
 					// cambiar el color del Thumb
 					thumbColor={
-						valorSwitch
+						valSwitch3
 							? colores.vividSkyBlue
 							: colores.bone
 					}
+					onValueChange={(e) => setValSwitch3(e)}
 				/>
 			</View>
 
 			<View style={estilos.switchContainer}>
-				<Text style={estilos.switchText}>
+				<Text
+					style={estilos.switchText}
+					onPress={() =>
+						setValSwitch4(!valSwitch4)
+					}>
 					Vender mi alma
 				</Text>
 				<Switch
-					value={!valorSwitch}
+					value={valSwitch4}
 					trackColor={{
 						false: colores.candyPink, //Color de la barra apagada (Android)
 						true: colores.yinMnBlue, //Color de la barra encendida (Android)
@@ -304,10 +399,11 @@ const ControlesScreen = (props) => {
 					// Dependiendo del estado del Swith podemos
 					// cambiar el color del Thumb
 					thumbColor={
-						!valorSwitch
+						valSwitch4
 							? colores.vividSkyBlue
 							: colores.bone
 					}
+					onValueChange={(e) => setValSwitch4(e)}
 				/>
 			</View>
 
@@ -328,6 +424,10 @@ const ControlesScreen = (props) => {
 							color={'green'}
 						/>
 					}
+					// Guardamos en valRadio el
+					// objeto del RadioButton
+					// Seleccionado
+					selectedBtn={(e) => setValRadio(e)}
 				/>
 			</View>
 
@@ -338,12 +438,20 @@ const ControlesScreen = (props) => {
 			{/* Los CheckBox son componentes diseñados
             para seleccionarse uno, ninguno o varios  */}
 			<CheckBox
-				value={valorCheckBox}
+				value={valCheck1}
 				color={colores.middleBlueGreen}
+				// Guardamos en un state el cambio
+				// del valor del Check
+				onValueChange={(e) => {
+					console.log(e);
+					setValCheck1(e);
+					setValCheck2(e);
+				}}
 			/>
 			<CheckBox
-				value={!valorCheckBox}
+				value={valCheck2}
 				color={colores.candyPink}
+				onValueChange={(e) => setValCheck2(e)}
 			/>
 
 			<Text style={estilos.tituloComponente}>
@@ -352,20 +460,34 @@ const ControlesScreen = (props) => {
 
 			<View style={estilos.checkBoxContainer}>
 				<CheckBox
-					value={valorCheckBox}
+					value={valCheck3}
 					color={colores.roseDust}
+					onValueChange={(e) => setValCheck3(e)}
 				/>
-				<Text style={estilos.checkBoxText}>
+				<Text
+					style={estilos.checkBoxText}
+					onPress={() => {
+						/*
+                        Al dar click al texto invertimos el valor
+                        del Check
+                        */
+						setValCheck3(!valCheck3);
+					}}>
 					Deseo recibir ofertas
 				</Text>
 			</View>
 
 			<View style={estilos.checkBoxContainer}>
 				<CheckBox
-					value={!valorCheckBox}
+					value={valCheck4}
 					color={colores.yinMnBlue}
+					onValueChange={(e) => setValCheck4(e)}
 				/>
-				<Text style={estilos.checkBoxText}>
+				<Text
+					style={estilos.checkBoxText}
+					onPress={(e) =>
+						setValCheck4(!valCheck4)
+					}>
 					Deseo suscribirme
 				</Text>
 			</View>
@@ -373,15 +495,22 @@ const ControlesScreen = (props) => {
 			<Text style={estilos.tituloComponente}>
 				Slider
 			</Text>
+			<Text style={estilos.tituloComponente}>
+				Valor slider: {valSlider}
+			</Text>
 			<Slider
 				style={{ margin: 8 }}
 				minimumValue={1}
-				maximumValue={10}
-				value={7}
+				maximumValue={100}
+				value={valSlider}
 				step={1}
 				minimumTrackTintColor={colores.candyPink}
 				maximumTrackTintColor={colores.yinMnBlue}
 				thumbTintColor={colores.tumbleweed}
+				/*
+                Guardamos el valor del Slider en su state
+                */
+				onValueChange={(e) => setValSlider(e)}
 			/>
 
 			<View style={{ margin: 8, padding: 8 }}>
@@ -405,7 +534,7 @@ const ControlesScreen = (props) => {
 					<Picker
 						prompt='Selecciona un elemento'
 						numberOfLines={1}
-						selectedValue={3}
+						selectedValue={valPicker}
 						// Para Android podemos visualizar
 						// El Picker como una modal o como un
 						// Dropdown Item
@@ -418,7 +547,14 @@ const ControlesScreen = (props) => {
 								Platform.OS === 'ios'
 									? -32
 									: 0,
-						}}>
+						}}
+						/*
+                        Guardamos en el state el cambio de valor
+                        del Picker 
+                        */
+						onValueChange={(e) =>
+							setValPicker(e)
+						}>
 						<Picker.Item
 							label='Uno'
 							value={1}
@@ -446,15 +582,109 @@ const ControlesScreen = (props) => {
 			<Text style={estilos.tituloComponente}>
 				DatePicker
 			</Text>
+			{/* El Botón para mostrar DatePicker solo aplica  si el 
+            SO NO ES iOS */}
+			{Platform.OS !== 'ios' && (
+				<Button
+					title='Mostrar DatePicker'
+					onPress={() => {
+						// Mostramos el datepicker
+						setDatePickerVisible(true);
+					}}
+				/>
+			)}
 			{/* Para mostrar un DatePicker necesitamos indicar 
             el tipo de vista (display) y la fecha de inicio 
             del DatePicker */}
-			<DateTimePicker
-				// Display spinner solo aplica en iOS
-				display='spinner'
-				value={new Date()}
-				onChange={() => {}}
-			/>
+
+			{/* Verificamos si datePickerVisible es verdadero
+                    de lo contrario no renderizamos esta sección 
+                    del código  */}
+
+			{datePickerVisible && (
+				<DateTimePicker
+					// Display spinner solo aplica en iOS
+					// display='spinner'
+					display='default'
+					value={new Date()}
+					onChange={(e) => {
+						//Cambiar el State
+						//de visibilidad del datepicker
+						//nuevamente a falso
+						//Si No es IOS
+						Platform.OS !== 'ios'
+							? setDatePickerVisible(false)
+							: null;
+						console.log(e.nativeEvent);
+					}}
+				/>
+			)}
+
+			<View style={{ margin: 8, padding: 8 }}>
+				<Button
+					title='Alert'
+					onPress={() => {
+						/*
+                        Alert es el componente que permite mostrar 
+                        Diálogos de manera nativa en ambas plataformas 
+                        tienes la siguiente estructura:
+                        1.- Título
+                        2.- Mensaje 
+                        3.- Botones 
+                        4.- Config adicional
+                        */
+						Alert.alert(
+							'Título',
+							'Mensaje, que puede ser un texto...',
+							// Alert maneja los Botones
+							// como un arreglo limitado a 3 Botones
+							// cuando se trata de Android
+							// Cada botón cuenta con 3 argumentos:
+							// 1. - Texto del botón
+							// 2. - La acción al darl click
+							// 3. - Estilo de botón (SOLO iOS)
+							[
+								{
+									text: 'B1',
+									onPress: () => {},
+									style: 'default',
+								},
+								{
+									text: 'B2',
+									onPress: () => {},
+									style: 'cancel',
+								},
+								{
+									text: 'B3',
+									onPress: () =>
+										props.navigation.navigate(
+											'menu'
+										),
+									style: 'destructive',
+								},
+								// SOLO iOS soporta N cantidad
+								// de botones, pero Android solo
+								// muestra tres
+								{
+									text: 'B4',
+									onPress: () => {},
+									style: 'default',
+								},
+								{
+									text: 'B5',
+									onPress: () => {},
+									style: 'default',
+								},
+								{
+									text: 'B6',
+									onPress: () => {},
+									style: 'default',
+								},
+							]
+						);
+					}}
+				/>
+			</View>
 
 			{/* Creamos un espacio para que los elementos no queden sobre el fondo */}
 			<View style={{ marginBottom: 100 }} />
