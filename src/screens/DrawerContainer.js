@@ -12,6 +12,11 @@ import HomeDrawerItem from './drawerItems/HomeDrawerItem';
 import NotificacionesDrawerItem from './drawerItems/NotificacionesDrawerItem';
 import TercerPantallaDrawerItem from './drawerItems/TercerPantallaDrawerItem';
 
+/*
+Importamos el diseño de nuestro Sidebar
+*/
+import Sidebar from './../components/Sidebar';
+
 // Iconos
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
@@ -28,6 +33,17 @@ NavigationDrawer
 const DrawerContainer = (props) => {
 	return (
 		<Drawer.Navigator
+			/*
+            Por medio de DrawerContent podemos personalizar 
+            el contenido del SidebarNav de N. Drawer
+            
+            Existe un componente específico para generar elementos 
+            en un NavDrawer
+            <DrawerContentScrollView>
+                <DrawerItem />
+            </DrawerContentScrollView>
+            */
+			drawerContent={() => <Sidebar {...props} />}
 			screenOptions={{
 				headerStyle: {
 					backgroundColor: colores.yinMnBlue,
