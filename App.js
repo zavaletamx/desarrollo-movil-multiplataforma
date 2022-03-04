@@ -36,6 +36,7 @@ import DrawerContainer from './src/screens/DrawerContainer';
 import ControlesScreen from './src/screens/ControlesScreen';
 import ImagenesScreen from './src/screens/ImagenesScreen';
 import EstadosScreen from './src/screens/EstadosScreen';
+import EjemploFlatListScreen from './src/screens/EjemploFlatListScreen';
 import { StatusBar } from 'react-native';
 
 /*
@@ -132,6 +133,11 @@ export default function App() {
 				<Stack.Screen
 					name='estados'
 					component={EstadosScreen}
+				/>
+
+				<Stack.Screen
+					name='flatlist'
+					component={EjemploFlatListScreen}
 				/>
 			</Stack.Navigator>
 		</NavigationContainer>

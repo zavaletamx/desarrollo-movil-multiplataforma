@@ -129,6 +129,13 @@ const MenuScreen = (props) => {
 					props.navigation.navigate('estados');
 				}}
 			/>
+
+			<Button
+				title='Flatlist'
+				onPress={() => {
+					props.navigation.navigate('flatlist');
+				}}
+			/>
 		</ScrollView>
 	);
 };
