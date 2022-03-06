@@ -130,6 +130,10 @@ const MenuScreen = (props) => {
 				}}
 			/>
 
+			{/* Solo queremos mostrar el componente espacio 
+            en Android  */}
+			{Platform.OS === 'android' && <Espacio />}
+
 			<Button
 				title='Flatlist'
 				onPress={() => {

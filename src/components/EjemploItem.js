@@ -26,7 +26,7 @@ const EjemploItem = (props) => {
 			<View
 				style={{
 					flex: 1,
-					flexDirection: 'row',
+					flexDirection: 'column',
 				}}>
 				<View
 					style={{
