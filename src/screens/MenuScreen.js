@@ -140,6 +140,30 @@ const MenuScreen = (props) => {
 					props.navigation.navigate('flatlist');
 				}}
 			/>
+
+			{/* Solo queremos mostrar el componente espacio 
+            en Android  */}
+			{Platform.OS === 'android' && <Espacio />}
+
+			<Button
+				title='Ejemplo Promesa'
+				onPress={() => {
+					props.navigation.navigate('promesa');
+				}}
+			/>
+
+			{/* Solo queremos mostrar el componente espacio 
+            en Android  */}
+			{Platform.OS === 'android' && <Espacio />}
+
+			<Button
+				title='Ejemplo Async Await'
+				onPress={() => {
+					props.navigation.navigate(
+						'async_await'
+					);
+				}}
+			/>
 		</ScrollView>
 	);
 };

@@ -37,6 +37,9 @@ import ControlesScreen from './src/screens/ControlesScreen';
 import ImagenesScreen from './src/screens/ImagenesScreen';
 import EstadosScreen from './src/screens/EstadosScreen';
 import EjemploFlatListScreen from './src/screens/EjemploFlatListScreen';
+import PromesaScreen from './src/screens/PromesaScreen';
+import AsyncAwaitScreen from './src/screens/AsyncAwaitScreen';
+
 import { StatusBar } from 'react-native';
 
 /*
@@ -138,6 +141,16 @@ export default function App() {
 				<Stack.Screen
 					name='flatlist'
 					component={EjemploFlatListScreen}
+				/>
+
+				<Stack.Screen
+					name='promesa'
+					component={PromesaScreen}
+				/>
+
+				<Stack.Screen
+					name='async_await'
+					component={AsyncAwaitScreen}
 				/>
 			</Stack.Navigator>
 		</NavigationContainer>
