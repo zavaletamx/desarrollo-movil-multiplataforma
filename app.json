@@ -15,9 +15,13 @@
 		},
 		"assetBundlePatterns": ["**/*"],
 		"ios": {
+			"bundleIdentifier": "mx.edu.uteq.dmm.t196",
+			"googleServicesFile": "./GoogleService-Info.plist",
 			"supportsTablet": true
 		},
 		"android": {
+			"package": "mx.edu.uteq.dmm.t196",
+			"googleServicesFile": "./google-services.json",
 			"adaptiveIcon": {
 				"foregroundImage": "./assets/adaptive-icon.png",
 				"backgroundColor": "#FFFFFF"

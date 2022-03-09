@@ -14,7 +14,7 @@ import colores from '../styles/colores';
 
 const AsyncAwaitScreen = (props) => {
 	//const url = 'https://reqres.in/api/users?per_page=12';
-	const url = 'https://zavaletazea.dev/ejemplo_json.phpX';
+	const url = 'https://zavaletazea.dev/ejemplo_json.php';
 
 	const [flatCargando, setFlatCargando] =
 		React.useState(false);
