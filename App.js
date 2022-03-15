@@ -13,6 +13,9 @@ import 'react-native-gesture-handler';
  * un StackScreen
  */
 
+//invocamos a LogBox para ocultar los Warnings
+import { LogBox } from 'react-native';
+
 //Importamos a NavigationContainer
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -39,6 +42,8 @@ import EstadosScreen from './src/screens/EstadosScreen';
 import EjemploFlatListScreen from './src/screens/EjemploFlatListScreen';
 import PromesaScreen from './src/screens/PromesaScreen';
 import AsyncAwaitScreen from './src/screens/AsyncAwaitScreen';
+import ListaUbicacionesScreen from './src/screens/firebase/ListaUbicacionesScreen';
+import MapaScreen from './src/screens/mapas/MapaScreen';
 
 import { StatusBar } from 'react-native';
 
@@ -48,6 +53,10 @@ del Stack
 */
 
 export default function App() {
+	/*
+    Ocultamos los Warnings del proyecto
+    */
+	LogBox.ignoreAllLogs(true);
 	return (
 		/** Creamos un contenedor de navegación para 
         toda la app */
@@ -151,6 +160,22 @@ export default function App() {
 				<Stack.Screen
 					name='async_await'
 					component={AsyncAwaitScreen}
+				/>
+
+				<Stack.Screen
+					name='firebase_listaubicaciones'
+					component={ListaUbicacionesScreen}
+					options={{
+						title: 'Lista de ubicaciones',
+					}}
+				/>
+
+				<Stack.Screen
+					name='mapa_base'
+					component={MapaScreen}
+					options={{
+						title: 'Ejemplo de mapa básico',
+					}}
 				/>
 			</Stack.Navigator>
 		</NavigationContainer>

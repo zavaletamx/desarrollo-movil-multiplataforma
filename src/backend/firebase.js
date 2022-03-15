@@ -8,6 +8,10 @@ expo install firebase
 */
 import firebase from 'firebase';
 
+//importamos el motor de base de datos
+//NoSQL
+import 'firebase/firestore';
+
 /*
 Reutilizamos el objeto de conexión de la versión web
 de firebase
@@ -29,6 +33,8 @@ firebase.initializeApp(firebaseConfig);
 Exportamos los servicios de firebase que vamos a ocupar
 */
 const database = firebase.firestore();
+
 export default {
+	firebase,
 	database,
 };

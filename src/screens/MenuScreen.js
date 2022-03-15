@@ -35,20 +35,16 @@ const MenuScreen = (props) => {
             props.navigation.navigate('_NAME_SCREEN_');
 
              */}
-
 			<View style={{ marginTop: 40 }} />
-
 			<Button
 				title='Ejemplo FlexBox'
 				onPress={() => {
 					props.navigation.navigate('flex');
 				}}
 			/>
-
 			{/* Solo queremos mostrar el componente espacio 
             en Android  */}
 			{Platform.OS === 'android' && <Espacio />}
-
 			{/* Si la función onpress no contiene parámetros, 
             se puede indicar directamente como valor
             de la propiedad */}
@@ -56,112 +52,113 @@ const MenuScreen = (props) => {
 				title='Estilos Globales'
 				onPress={clickBoton}
 			/>
-
 			{/* Solo queremos mostrar el componente espacio 
             en Android  */}
 			{Platform.OS === 'android' && <Espacio />}
-
 			{/* Si la función onpress cotiene parámetros, debe indicarse
             dentro de una función flecha */}
 			<Button
 				title='Estilos Globales'
 				onPress={() => clickPantalla('estilos')}
 			/>
-
 			{/* Solo queremos mostrar el componente espacio 
             en Android  */}
 			{Platform.OS === 'android' && <Espacio />}
-
 			<Button
 				title='Iconos'
 				onPress={() => {
 					props.navigation.navigate('iconos');
 				}}
 			/>
-
 			{/* Solo queremos mostrar el componente espacio 
             en Android  */}
 			{Platform.OS === 'android' && <Espacio />}
-
 			<Button
 				title='Menu Tab'
 				onPress={() => clickPantalla('menu_tab')}
 			/>
-
 			{/* Solo queremos mostrar el componente espacio 
             en Android  */}
 			{Platform.OS === 'android' && <Espacio />}
-
 			<Button
 				title='Menu Drawer'
 				onPress={() => clickPantalla('menu_drawer')}
 			/>
-
 			{/* Solo queremos mostrar el componente espacio 
             en Android  */}
 			{Platform.OS === 'android' && <Espacio />}
-
 			<Button
 				title='Controles'
 				onPress={() => {
 					props.navigation.navigate('controles');
 				}}
 			/>
-
 			{/* Solo queremos mostrar el componente espacio 
             en Android  */}
 			{Platform.OS === 'android' && <Espacio />}
-
 			<Button
 				title='Imágenes'
 				onPress={() => {
 					props.navigation.navigate('imagenes');
 				}}
 			/>
-
 			{/* Solo queremos mostrar el componente espacio 
             en Android  */}
 			{Platform.OS === 'android' && <Espacio />}
-
 			<Button
 				title='Estados'
 				onPress={() => {
 					props.navigation.navigate('estados');
 				}}
 			/>
-
 			{/* Solo queremos mostrar el componente espacio 
             en Android  */}
 			{Platform.OS === 'android' && <Espacio />}
-
 			<Button
 				title='Flatlist'
 				onPress={() => {
 					props.navigation.navigate('flatlist');
 				}}
 			/>
-
 			{/* Solo queremos mostrar el componente espacio 
             en Android  */}
 			{Platform.OS === 'android' && <Espacio />}
-
 			<Button
 				title='Ejemplo Promesa'
 				onPress={() => {
 					props.navigation.navigate('promesa');
 				}}
 			/>
-
 			{/* Solo queremos mostrar el componente espacio 
             en Android  */}
 			{Platform.OS === 'android' && <Espacio />}
-
 			<Button
 				title='Ejemplo Async Await'
 				onPress={() => {
 					props.navigation.navigate(
 						'async_await'
 					);
+				}}
+			/>
+			{/* Solo queremos mostrar el componente espacio 
+            en Android  */}
+			{Platform.OS === 'android' && <Espacio />}
+			<Button
+				title='CRUD - Firebase '
+				onPress={() => {
+					props.navigation.navigate(
+						'firebase_listaubicaciones'
+					);
+				}}
+			/>
+
+			{/* Solo queremos mostrar el componente espacio 
+            en Android  */}
+			{Platform.OS === 'android' && <Espacio />}
+			<Button
+				title='Mapa básico'
+				onPress={() => {
+					props.navigation.navigate('mapa_base');
 				}}
 			/>
 		</ScrollView>
