@@ -44,6 +44,7 @@ import PromesaScreen from './src/screens/PromesaScreen';
 import AsyncAwaitScreen from './src/screens/AsyncAwaitScreen';
 import ListaUbicacionesScreen from './src/screens/firebase/ListaUbicacionesScreen';
 import MapaScreen from './src/screens/mapas/MapaScreen';
+import AgregaUbicacion from './src/screens/firebase/AgregaUbicacion';
 
 import { StatusBar } from 'react-native';
 
@@ -175,6 +176,14 @@ export default function App() {
 					component={MapaScreen}
 					options={{
 						title: 'Ejemplo de mapa básico',
+					}}
+				/>
+
+				<Stack.Screen
+					name='agrega_ubicacion'
+					component={AgregaUbicacion}
+					options={{
+						title: 'CRUD - Firebase',
 					}}
 				/>
 			</Stack.Navigator>

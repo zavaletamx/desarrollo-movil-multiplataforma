@@ -161,6 +161,18 @@ const MenuScreen = (props) => {
 					props.navigation.navigate('mapa_base');
 				}}
 			/>
+
+			{/* Solo queremos mostrar el componente espacio 
+            en Android  */}
+			{Platform.OS === 'android' && <Espacio />}
+			<Button
+				title='CRUD - Ubicaciones'
+				onPress={() => {
+					props.navigation.navigate(
+						'agrega_ubicacion'
+					);
+				}}
+			/>
 		</ScrollView>
 	);
 };
