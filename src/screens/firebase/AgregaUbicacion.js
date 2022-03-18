@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+	Alert,
 	View,
 	Text,
 	TextInput,
@@ -145,6 +146,53 @@ const AgregaUbicacion = (props) => {
 		}
 	};
 
+	/*
+    Función para geolocalizar una ubicación a partir del GPS
+    del dispositivo
+    */
+	const getGeolocalizacion = async () => {
+		setShowProgress(true);
+
+		/*
+        Preguntamos por el permiso de ubicación 
+        y revisamos si se concede el permiso
+        */
+
+		/*
+       Puedo tomar solo una propieda de un objeto en una variable
+
+       const {status} = Objeto;
+       */
+
+		let { status } =
+			await Location.requestForegroundPermissionsAsync();
+
+		//Si no tenemos el permiso notificamos al usuario
+		//que es necesario para esta funcionalidad
+		if (status !== 'granted') {
+			Alert.alert(
+				'¡Hey!',
+				'El permiso de ubicación es requerido para ubicarte'
+			);
+			showProgress(false);
+			return;
+		}
+
+		/*
+        Tomamos la ubicación del usuario 
+        con la mayor presición posible
+        */
+		const location =
+			await Location.getCurrentPositionAsync({
+				accuracy: Location.Accuracy.Highest,
+			});
+
+		getDireccionFromUbicacion(
+			location.coords.latitude,
+			location.coords.longitude
+		);
+	};
+
 	return (
 		<View style={{ flex: 1 }}>
 			{/* Si el state para el progress es verdadero
@@ -235,6 +283,7 @@ const AgregaUbicacion = (props) => {
 					<Button
 						title='Usar mi ubicación actual'
 						color={colores.yinMnBlue}
+						onPress={() => getGeolocalizacion()}
 					/>
 				</View>
 			</ScrollView>
