@@ -1,8 +1,15 @@
 import React from 'react';
-import { Button, Text, View } from 'react-native';
-import firebase from './../../backend/firebase';
+import { TouchableOpacity } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
-const HomeContainer = (props) => {
+import firebase from '../backend/firebase';
+import colores from '../styles/colores';
+
+/*
+Componente para cerrar sesión
+en firebase 
+*/
+const BtnCerrarSesion = () => {
 	const salirFirebase = async () => {
 		try {
 			/*
@@ -24,21 +31,16 @@ const HomeContainer = (props) => {
 	};
 
 	return (
-		<View
-			style={{
-				flex: 1,
-				justifyContent: 'center',
-				alignItems: 'center',
-			}}>
-			<Text>HomeContainer.js</Text>
-			<View style={{ margin: 8 }}>
-				<Button
-					title='Salir'
-					onPress={() => salirFirebase()}
-				/>
-			</View>
-		</View>
+		<TouchableOpacity
+			onPress={salirFirebase}
+			style={{ paddingEnd: 16 }}>
+			<Feather
+				name='power'
+				size={22}
+				color={colores.bone}
+			/>
+		</TouchableOpacity>
 	);
 };
 
-export default HomeContainer;
+export default BtnCerrarSesion;

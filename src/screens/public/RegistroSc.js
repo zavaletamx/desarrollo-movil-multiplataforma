@@ -62,7 +62,7 @@ const RegistroSc = (props) => {
             O_______O
 
             Si pruebas este ejemplo verás que por defecto después de 
-            iniciar sesión en automático nos reidrecciona al Home
+            iniciar sesión en automático nos redirecciona al Home
 
             Eso es lo que programamos en CheckLoginSc.js
             */

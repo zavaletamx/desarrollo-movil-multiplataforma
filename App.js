@@ -1,13 +1,16 @@
-import 'react-native-gesture-handler';
 import React from 'react';
-import { LogBox, StatusBar } from 'react-native';
+import { LogBox, StatusBar, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import colores from './src/styles/colores';
 import CheckLoginSc from './src/screens/public/CheckLoginSc';
 import LoginSc from './src/screens/public/LoginSc';
 import RegistroSc from './src/screens/public/RegistroSc';
-import HomeContainer from './src/screens/private/HomeContainer';
+import ListaMascotasSc from './src/screens/private/ListaMascotasSc';
+import BtnAgregarMascota from './src/components/BtnAgregarMascota';
+
+import BtnCerrarSesion from './src/components/BtnCerrarSesion';
+import AgregaMascotaSc from './src/screens/private/AgregaMascotaSc';
 
 const Stack = createNativeStackNavigator();
 
@@ -36,7 +39,9 @@ export default function App() {
 				<Stack.Screen
 					name='login'
 					component={LoginSc}
-					options={{ title: 'Iniciar sesión' }}
+					options={{
+						title: 'Iniciar sesión',
+					}}
 				/>
 
 				<Stack.Screen
@@ -47,8 +52,25 @@ export default function App() {
 
 				<Stack.Screen
 					name='home_container'
-					component={HomeContainer}
-					options={{ title: 'HomeContainer' }}
+					component={ListaMascotasSc}
+					options={{
+						title: 'Mis mascotas',
+						headerLeft: () => (
+							<BtnCerrarSesion />
+						),
+						headerRight: () => (
+							<BtnAgregarMascota />
+						),
+					}}
+				/>
+
+				<Stack.Screen
+					name='agrega_mascota'
+					component={AgregaMascotaSc}
+					options={{
+						title: 'Agregar mascota',
+						animation: 'slide_from_bottom',
+					}}
 				/>
 			</Stack.Navigator>
 		</NavigationContainer>
