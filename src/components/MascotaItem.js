@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, ImageBackground } from 'react-native';
 
 /*
-Componente para documento de la colección moascotas
+Componente para documento de la colección mascotas
 */
 const MascotaItem = (props) => (
 	<View style={{ flex: 1, flexDirection: 'row' }}>
