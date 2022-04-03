@@ -11,6 +11,7 @@ import BtnAgregarMascota from './src/components/BtnAgregarMascota';
 
 import BtnCerrarSesion from './src/components/BtnCerrarSesion';
 import AgregaMascotaSc from './src/screens/private/AgregaMascotaSc';
+import EditaMascotaSc from './src/screens/private/EditaMascotaSc';
 
 const Stack = createNativeStackNavigator();
 
@@ -70,6 +71,15 @@ export default function App() {
 					options={{
 						title: 'Agregar mascota',
 						animation: 'slide_from_bottom',
+					}}
+				/>
+
+				<Stack.Screen
+					name='edita_mascota'
+					component={EditaMascotaSc}
+					options={{
+						title: 'Editar mascota',
+						animation: 'slide_from_right',
 					}}
 				/>
 			</Stack.Navigator>
