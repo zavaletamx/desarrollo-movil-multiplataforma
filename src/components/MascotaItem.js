@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+	Alert,
 	Text,
 	TouchableOpacity,
 	View,
@@ -10,11 +11,41 @@ import { AntDesign } from '@expo/vector-icons';
 
 import { useNavigation } from '@react-navigation/native';
 
+import firebase from '../backend/firebase';
+
 /*
 Componente para documento de la colección mascotas
 */
 const MascotaItem = (props) => {
 	const navigation = useNavigation();
+
+	// Función para eliminar un documento
+	// a partir de su id
+	const eliminarMascota = async () => {
+		Alert.alert(
+			`¿Eliminar a ${props.mascota.nombre}?`,
+			'Esta acción no puede deshacerse',
+			[
+				{
+					text: 'Eliminar',
+					onPress: async () => {
+						props.setProgress(true);
+						await firebase.database
+							.collection('mascotas')
+							.doc(props.mascota.id)
+							.delete();
+						props.cargaMascotas();
+						props.setProgress(false);
+					},
+					style: 'destructive',
+				},
+				{
+					text: '¡No, espera!',
+				},
+			],
+			{ cancelable: false }
+		);
+	};
 
 	return (
 		<View
@@ -61,8 +92,15 @@ const MascotaItem = (props) => {
 			<View style={{ flexDirection: 'row' }}>
 				{/* Boton para editar */}
 				<TouchableOpacity
+					// Enviamos como parámetro de navegación
+					// el id del documento
 					onPress={() =>
-						navigation.navigate('edita_mascota')
+						navigation.navigate(
+							'edita_mascota',
+							{
+								mascotaID: props.mascota.id,
+							}
+						)
 					}
 					style={{
 						padding: 8,
@@ -83,7 +121,8 @@ const MascotaItem = (props) => {
 						padding: 8,
 						backgroundColor: colores.candyPink,
 						borderRadius: 8,
-					}}>
+					}}
+					onPress={eliminarMascota}>
 					<AntDesign
 						name='delete'
 						size={22}

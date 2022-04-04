@@ -197,8 +197,7 @@ const AgregaMascotaSc = (props) => {
 						nombre: mascota.nombre,
 						raza: mascota.raza,
 						foto: await subida.ref.getDownloadURL(),
-                    });
-                
+					});
 			} else {
 				// Insertamos un nuevo documento
 				await firebase.database

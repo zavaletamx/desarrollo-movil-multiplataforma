@@ -11,12 +11,16 @@ import MascotaItem from '../../components/MascotaItem';
 import NoMascotasView from '../../components/NoMascotasView';
 import colores from '../../styles/colores';
 
+import ProgressDialog from '../../components/ProgressDialog';
+
 const ListaMascotasSc = (props) => {
 	// State para guardar el arreglo de mascotas
 	const [mascotas, setMascotas] = React.useState([]);
 
 	// Controlamos la visibilidad del loader
 	const [refresh, setRefresh] = React.useState(false);
+
+	const [progress, setProgress] = React.useState(false);
 
 	// Efecto para consultar la colección mascotas en cuanto se inicialice
 	// este Screen
@@ -73,6 +77,7 @@ const ListaMascotasSc = (props) => {
 
 	return (
 		<View style={{ flex: 1 }}>
+			{progress && <ProgressDialog />}
 			<FlatList
 				// Indicamos los eventos y estilo para el evento swipe
 				refreshControl={
@@ -94,8 +99,14 @@ const ListaMascotasSc = (props) => {
 				// del arreglo de mascotas
 				data={mascotas}
 				// Indicamos el estilo por cada elemento
+				// Pasamos como propiedades los elementos
+				// necesarios
 				renderItem={(item) => (
-					<MascotaItem mascota={item.item} />
+					<MascotaItem
+						mascota={item.item}
+						cargaMascotas={cargaMascotas}
+						setProgress={setProgress}
+					/>
 				)}
 				// En caso de un FlatList vacio
 				// Mostramos este componente
