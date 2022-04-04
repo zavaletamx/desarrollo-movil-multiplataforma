@@ -1,4 +1,5 @@
 import React from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 import {
 	FlatList,
 	RefreshControl,
@@ -7,6 +8,7 @@ import {
 
 import firebase from '../../backend/firebase';
 import MascotaItem from '../../components/MascotaItem';
+import NoMascotasView from '../../components/NoMascotasView';
 import colores from '../../styles/colores';
 
 const ListaMascotasSc = (props) => {
@@ -21,6 +23,17 @@ const ListaMascotasSc = (props) => {
 	React.useEffect(() => {
 		cargaMascotas();
 	}, []);
+
+	/*
+    Agregamos un focusEffect para que al volver 
+    del insertar mascota, se vuelva a ejecutar 
+    la consulta y actualice el arreglo
+    */
+	useFocusEffect(
+		React.useCallback(() => {
+			cargaMascotas();
+		}, [])
+	);
 
 	// Función que realiza la consulta de mascotas y el resultado lo almacena
 	// en el state mascotas
@@ -55,9 +68,7 @@ const ListaMascotasSc = (props) => {
 
 		// Actualizamos el state
 		setMascotas(arrMascotas);
-
 		setRefresh(false);
-		console.log(mascotas);
 	};
 
 	return (
@@ -85,6 +96,11 @@ const ListaMascotasSc = (props) => {
 				// Indicamos el estilo por cada elemento
 				renderItem={(item) => (
 					<MascotaItem mascota={item.item} />
+				)}
+				// En caso de un FlatList vacio
+				// Mostramos este componente
+				ListEmptyComponent={() => (
+					<NoMascotasView />
 				)}
 			/>
 		</View>

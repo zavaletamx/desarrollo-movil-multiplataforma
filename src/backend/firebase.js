@@ -34,9 +34,11 @@ Exportamos los servicios de firebase que vamos a ocupar
 */
 const database = firebase.firestore();
 const auth = firebase.auth();
+const storage = firebase.storage();
 
 export default {
 	firebase,
 	database,
 	auth,
+	storage,
 };
