@@ -1,6 +1,7 @@
 import React from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 import {
+	Button,
 	FlatList,
 	RefreshControl,
 	View,
@@ -113,6 +114,12 @@ const ListaMascotasSc = (props) => {
 				ListEmptyComponent={() => (
 					<NoMascotasView />
 				)}
+			/>
+			<Button
+				title='Al chat'
+				onPress={() =>
+					props.navigation.navigate('chat_screen')
+				}
 			/>
 		</View>
 	);

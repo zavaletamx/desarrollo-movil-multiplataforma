@@ -12,6 +12,7 @@ import BtnAgregarMascota from './src/components/BtnAgregarMascota';
 import BtnCerrarSesion from './src/components/BtnCerrarSesion';
 import AgregaMascotaSc from './src/screens/private/AgregaMascotaSc';
 import EditaMascotaSc from './src/screens/private/EditaMascotaSc';
+import ChatScreen from './src/screens/private/ChatScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -79,6 +80,15 @@ export default function App() {
 					component={EditaMascotaSc}
 					options={{
 						title: 'Editar mascota',
+						animation: 'slide_from_right',
+					}}
+				/>
+
+				<Stack.Screen
+					name='chat_screen'
+					component={ChatScreen}
+					options={{
+						title: 'Chat',
 						animation: 'slide_from_right',
 					}}
 				/>

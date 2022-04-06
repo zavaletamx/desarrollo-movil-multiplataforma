@@ -34,6 +34,7 @@ const MascotaItem = (props) => {
 							.collection('mascotas')
 							.doc(props.mascota.id)
 							.delete();
+
 						props.cargaMascotas();
 						props.setProgress(false);
 					},
